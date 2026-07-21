@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="AI Fast PenaFlex: Background Removal, New Background, Filters, Edit, Download. Professional Image Editor by M IJAZ">
+  <meta name="keywords" content="PenaFlex, AI Image Editor, Background Removal, Photo Editor, M IJAZ">
+  <meta name="author" content="M IJAZ">
+  <meta name="robots" content="index, follow">
+  
+  <title>PenaFlex AI - Professional Image Editor</title>
+
+  <!-- 1. PWA Tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4A90E2">
+  <meta name="application-name" content="PenaFlex AI">
+  
+  <!-- 2. iOS Support - iPhone ke liye -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="PenaFlex">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
+  <!-- 3. Favicon -->
+  <link rel="icon" type="image/png" href="icon-192.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🎨 PenaFlex <span>AI</span></h1>
+    <p>Professional Image Editor by M IJAZ</p>
+  </header>
+
+  <main>
+    <div class="upload-box">
+      <input type="file" id="upload" accept="image/*" aria-label="Upload Image">
+      <label for="upload">📁 Upload Image</label>
+    </div>
+
+    <div id="editor" class="hidden">
+      <div class="canvas-wrap">
+        <canvas id="canvas" aria-label="Image Editor Canvas"></canvas>
+        <div class="watermark">M IJAZ</div>
+      </div>
+
+      <div class="tools">
+        <button onclick="removeBackground()" aria-label="AI Remove Background">✨ AI Remove BG</button>
+        <button onclick="showBgOptions()" aria-label="Change Background">🖼️ New Background</button>
+        <button onclick="showFilters()" aria-label="Apply Filters">🎭 Filters</button>
+        <button onclick="editImage()" aria-label="Rotate Image">✏️ Edit</button>
+        <button onclick="deleteImage()" aria-label="Delete Image">🗑️ Delete</button>
+        <button onclick="saveImage()" aria-label="Save Image">💾 Save</button>
+        <button onclick="shareImage()" aria-label="Share Image">📤 Share</button>
+        <button onclick="downloadImage()" aria-label="Download Image">⬇️ Download</button>
+      </div>
+
+      <div id="bg-options" class="panel hidden">
+        <label for="bgColor">BG Color:</label>
+        <input type="color" id="bgColor" value="#4A90E2" aria-label="Background Color">
+        <label for="bgImage">BG Image:</label>
+        <input type="file" id="bgImage" accept="image/*" aria-label="Background Image">
+        <button onclick="applyBgColor()">Apply Color</button>
+      </div>
+
+      <div id="filter-options" class="panel hidden">
+        <button onclick="applyFilter('grayscale(100%)')">B&W</button>
+        <button onclick="applyFilter('sepia(100%)')">Sepia</button>
+        <button onclick="applyFilter('brightness(150%)')">Bright</button>
+        <button onclick="applyFilter('contrast(150%)')">Contrast</button>
+        <button onclick="applyFilter('blur(5px)')">Blur</button>
+        <button onclick="applyFilter('none')">Reset</button>
+      </div>
+    </div>
+
+    <div id="loader" class="hidden" role="alert">AI is Processing... Please wait</div>
+  </main>
+
+  <footer>
+    © 2026 PenaFlex AI by M IJAZ | All rights reserved
+  </footer>
+
+  <!-- 4. AI Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.0/dist/browser.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
